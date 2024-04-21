@@ -6,10 +6,10 @@ escpos.USB = require('escpos-usb');
 const app = express();
 app.use(bodyParser.json()); // for parsing application/json
 
-const device = new escpos.USB();  // Assumes the printer is connected via USB
 
 app.post('/print', (req, res) => {
     const { text } = req.body;
+    const device = new escpos.USB();  // Assumes the printer is connected via USB
 
     device.open((err) => {
         if (err) {
